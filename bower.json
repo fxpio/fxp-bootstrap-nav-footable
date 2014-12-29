@@ -1,0 +1,27 @@
+{
+  "name": "sonatra-bootstrap-nav-footable",
+  "version": "1.0.0",
+  "authors": [
+    "François Pluchino <francois.pluchino@sonatra.com>"
+  ],
+  "description": "A Bootstrap Nav plugin for Footable",
+  "main": "js/nav-footable.js",
+  "keywords": [
+    "bootstrap",
+    "footable",
+    "nav",
+    "jquery"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/sonatra/sonatra-bootstrap-nav-footable",
+  "dependencies": {
+    "bootstrap": ">=3.0",
+    "footable": "2.0.*",
+    "jquery": ">=1.11.0"
+  },
+  "ignore": [
+    "examples",
+    "doc",
+    "README.md"
+  ]
+}
