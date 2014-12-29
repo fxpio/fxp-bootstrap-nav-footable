@@ -83,7 +83,8 @@
             }
 
             if (!data) {
-                $this.data('st.navfootable', (data = new NavFootable(this, options)));
+                data = new NavFootable(this, options);
+                $this.data('st.navfootable', data);
             }
 
             if (typeof option === 'string') {
