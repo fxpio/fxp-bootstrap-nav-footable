@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>Basic example - Sonatra Footable Striped</title>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../bower_components/footable/css/footable.core.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#other">Other</a></li>
+    <li><a data-toggle="tab" href="#footable-example">Footable</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="other">
+        <p>Other content</p>
+    </div>
+    <div class="tab-pane" id="footable-example">
+        <div class="table-responsive">
+            <table class="table table-hover" id="table-id">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Table heading 1</th>
+                    <th>Table heading 2</th>
+                    <th>Table heading 3</th>
+                    <th>Table heading 4</th>
+                    <th data-hide="all">Table heading 5</th>
+                    <th data-hide="all">Table heading 6</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/bootstrap/js/tab.js"></script>
+<script src="../bower_components/footable/js/footable.js"></script>
+<script src="../js/nav-footable.js"></script>
+<script>
+    $('#table-id').footable();
+</script>
+</body>
+</html>
