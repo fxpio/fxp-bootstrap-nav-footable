@@ -31,7 +31,7 @@
      */
     var NavFootable = function (element, options) {
         this.guid     = jQuery.guid;
-        this.options  = $.extend({}, NavFootable.DEFAULTS, options);
+        this.options  = $.extend(true, {}, NavFootable.DEFAULTS, options);
         this.$element = $(element);
         this.$content = $('.' + this.options.classFootable, this.$element.attr('href'));
         this.footable = this.$content.data('footable');
