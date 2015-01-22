@@ -87,12 +87,20 @@
         </div>
     </div>
 </div>
-<script src="../bower_components/jquery/dist/jquery.js"></script>
-<script src="../bower_components/bootstrap/js/tab.js"></script>
-<script src="../bower_components/footable/js/footable.js"></script>
-<script src="../js/nav-footable.js"></script>
 <script>
-    $('#table-id').footable();
+    var require = {
+        paths: {
+            'jquery': '../bower_components/jquery/dist/jquery',
+            'bootstrap': '../bower_components/bootstrap/js',
+            'footable': '../bower_components/footable/js/footable',
+            'sonatra-bootstrap-nav-footable': '../js/nav-footable'
+        },
+        deps: ['sonatra-bootstrap-nav-footable'],
+        callback: function () {
+            $('#table-id').footable();
+        }
+    };
 </script>
+<script src="../bower_components/requirejs/require.js" async="async"></script>
 </body>
 </html>
