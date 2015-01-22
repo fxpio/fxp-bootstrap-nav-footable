@@ -7,15 +7,27 @@
  * file that was distributed with this source code.
  */
 
+/*global define*/
 /*global jQuery*/
 /*global document*/
 
 /**
  * @param {jQuery} $
  *
+ * @typedef {object}      define.amd
  * @typedef {NavFootable} NavFootable
  */
-(function ($) {
+(function (factory) {
+    'use strict';
+
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery', 'bootstrap/tab', 'footable'], factory);
+    } else {
+        // Browser globals
+        factory(jQuery);
+    }
+}(function ($) {
     'use strict';
 
     // NAV FOOTABLE CLASS DEFINITION
@@ -116,4 +128,4 @@
         Plugin.call($(this), 'refresh');
     });
 
-}(jQuery));
+}));
