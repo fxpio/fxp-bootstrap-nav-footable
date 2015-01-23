@@ -95,6 +95,10 @@
             'footable': '../bower_components/footable/js/footable',
             'sonatra-bootstrap-nav-footable': '../js/nav-footable'
         },
+        shim: {
+            'bootstrap/tab': ['jquery'],
+            'footable': ['jquery']
+        },
         deps: ['sonatra-bootstrap-nav-footable'],
         callback: function () {
             $('#table-id').footable();
