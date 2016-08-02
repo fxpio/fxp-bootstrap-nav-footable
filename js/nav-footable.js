@@ -30,6 +30,29 @@
 }(function ($) {
     'use strict';
 
+    /**
+     * Refresh the footable on nav shown action.
+     *
+     * @param {jQuery.Event|Event} event The event
+     *
+     * @typedef {NavFootable} Event.data
+     *
+     * @private
+     */
+    function onShown(event) {
+        var self = event.data,
+            $contents = $(self.options.footableSelector, $(this).attr('href'));
+
+        $contents.each(function(index, content) {
+            var $content = $(content),
+                footable = $content.data('footable');
+
+            if (footable) {
+                footable.resize();
+            }
+        });
+    }
+
     // NAV FOOTABLE CLASS DEFINITION
     // =============================
 
@@ -45,8 +68,8 @@
         this.guid     = jQuery.guid;
         this.options  = $.extend(true, {}, NavFootable.DEFAULTS, options);
         this.$element = $(element);
-        this.$content = $('.' + this.options.classFootable, this.$element.attr('href'));
-        this.footable = this.$content.data('footable');
+
+        this.$element.on('shown.bs.tab.data-api.st.navfootable', '[data-toggle="tab"], [data-toggle="pill"]', this, onShown);
     },
         old;
 
@@ -56,18 +79,7 @@
      * @type {object}
      */
     NavFootable.DEFAULTS = {
-        classFootable: 'footable'
-    };
-
-    /**
-     * Refresh the footable.
-     *
-     * @this NavFootable
-     */
-    NavFootable.prototype.refresh = function () {
-        if (this.footable) {
-            this.footable.resize();
-        }
+        footableSelector: '.footable'
     };
 
     /**
@@ -76,7 +88,7 @@
      * @this NavFootable
      */
     NavFootable.prototype.destroy = function () {
-        $(document).off('shown.bs.tab.data-api.st.navfootable', '[data-toggle="tab"], [data-toggle="pill"]');
+        this.$element.off('shown.bs.tab.data-api.st.navfootable', '[data-toggle="tab"], [data-toggle="pill"]', onShown);
         this.$element.removeData('st.navfootable');
     };
 
@@ -124,8 +136,11 @@
     // NAV FOOTABLE DATA-API
     // =====================
 
-    $(document).on('shown.bs.tab.data-api.st.navfootable', '[data-toggle="tab"], [data-toggle="pill"]', function () {
-        Plugin.call($(this), 'refresh');
+    $(window).on('load', function () {
+        $(document).each(function () {
+            var $this = $(this);
+            Plugin.call($this, $this.data());
+        });
     });
 
 }));
