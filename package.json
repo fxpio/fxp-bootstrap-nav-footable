@@ -24,7 +24,7 @@
   "dependencies": {
     "jquery": "^2.1.0",
     "bootstrap": "^3.3.0",
-    "footable": "git+ssh://git@github.com/fooplugins/FooTable.git#2.0.3"
+    "footable": "git://github.com/fooplugins/FooTable.git#2.0.3"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
