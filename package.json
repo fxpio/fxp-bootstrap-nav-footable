@@ -17,7 +17,7 @@
     "url": "https://github.com/sonatra/sonatra-bootstrap-nav-footable.git"
   },
   "bugs": {
-    "url" : "https://github.com/sonatra/sonatra-bootstrap-nav-footable/issues"
+    "url": "https://github.com/sonatra/sonatra-bootstrap-nav-footable/issues"
   },
   "engines": {},
   "main": "js/nav-footable.js",
