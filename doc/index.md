@@ -14,7 +14,7 @@ Installation
 ------------
 
 ```
-npm install @sonatra/bootstrap-nav-footable --save
+npm install @fxp/bootstrap-nav-footable --save
 ```
 
 Dev installation

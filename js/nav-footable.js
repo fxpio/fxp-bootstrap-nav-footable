@@ -1,7 +1,7 @@
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -69,7 +69,7 @@
         this.options  = $.extend(true, {}, NavFootable.DEFAULTS, options);
         this.$element = $(element);
 
-        this.$element.on('shown.bs.tab.data-api.st.navfootable', '[data-toggle="tab"], [data-toggle="pill"]', this, onShown);
+        this.$element.on('shown.bs.tab.data-api.fxp.navfootable', '[data-toggle="tab"], [data-toggle="pill"]', this, onShown);
     },
         old;
 
@@ -88,7 +88,7 @@
      * @this NavFootable
      */
     NavFootable.prototype.destroy = function () {
-        this.$element.off('shown.bs.tab.data-api.st.navfootable', '[data-toggle="tab"], [data-toggle="pill"]', onShown);
+        this.$element.off('shown.bs.tab.data-api.fxp.navfootable', '[data-toggle="tab"], [data-toggle="pill"]', onShown);
         this.$element.removeData('st.navfootable');
     };
 

@@ -1,8 +1,8 @@
 {
-  "name": "@sonatra/bootstrap-nav-footable",
+  "name": "@fxp/bootstrap-nav-footable",
   "version": "1.0.0",
   "license": "MIT",
-  "author": "François Pluchino <francois.pluchino@sonatra.com>",
+  "author": "François Pluchino <francois.pluchino@gmail.com>",
   "contributors": [],
   "description": "A Bootstrap Nav plugin for Footable",
   "keywords": [
@@ -11,13 +11,13 @@
     "nav",
     "jquery"
   ],
-  "homepage": "https://github.com/sonatra/sonatra-bootstrap-nav-footable",
+  "homepage": "https://github.com/fxpio/fxp-bootstrap-nav-footable",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sonatra/sonatra-bootstrap-nav-footable.git"
+    "url": "https://github.com/fxpio/fxp-bootstrap-nav-footable.git"
   },
   "bugs": {
-    "url": "https://github.com/sonatra/sonatra-bootstrap-nav-footable/issues"
+    "url": "https://github.com/fxpio/fxp-bootstrap-nav-footable/issues"
   },
   "engines": {},
   "main": "js/nav-footable.js",
