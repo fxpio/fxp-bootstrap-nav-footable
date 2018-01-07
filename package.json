@@ -23,7 +23,7 @@
   "main": "js/nav-footable.js",
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "footable": "git://github.com/fooplugins/FooTable.git#2.0.3",
+    "footable": "github:fooplugins/FooTable#^2.0.3",
     "jquery": "^2.2.0||^3.2.0"
   },
   "devDependencies": {
