@@ -10,5 +10,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'footable/css/footable.core.css';
 import '../js/nav-footable';
+import $ from 'jquery';
 
 $('#table-id').footable();

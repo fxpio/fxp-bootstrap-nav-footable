@@ -7,142 +7,46 @@
  * file that was distributed with this source code.
  */
 
-/*global define*/
-/*global jQuery*/
-/*global document*/
+import pluginify from '@fxp/jquery-pluginify';
+import BasePlugin from '@fxp/jquery-pluginify/js/plugin';
+import {onShown} from "./utils/events";
+import 'bootstrap/js/tab';
+import 'footable/js/footable';
 
 /**
- * @param {jQuery} $
- *
- * @typedef {object}      define.amd
- * @typedef {NavFootable} NavFootable
+ * NavFootable class.
  */
-(function (factory) {
-    'use strict';
-
-    if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define(['jquery', 'bootstrap/js/tab', 'footable/js/footable'], factory);
-    } else {
-        // Browser globals
-        factory(jQuery);
-    }
-}(function ($) {
-    'use strict';
-
+export default class NavFootable extends BasePlugin
+{
     /**
-     * Refresh the footable on nav shown action.
+     * Constructor.
      *
-     * @param {jQuery.Event|Event} event The event
-     *
-     * @typedef {NavFootable} Event.data
-     *
-     * @private
+     * @param {HTMLElement} element The DOM element
+     * @param {object}      options The options
      */
-    function onShown(event) {
-        var self = event.data,
-            $contents = $(self.options.footableSelector, $(this).attr('href'));
+    constructor(element, options = {}) {
+        super(element, options);
 
-        $contents.each(function(index, content) {
-            var $content = $(content),
-                footable = $content.data('footable');
-
-            if (footable) {
-                footable.resize();
-            }
-        });
+        this.$element
+            .on('shown.bs.tab.data-api.fxp.navfootable', '[data-toggle="tab"], [data-toggle="pill"]', this, onShown);
     }
 
-    // NAV FOOTABLE CLASS DEFINITION
-    // =============================
-
     /**
-     * @constructor
-     *
-     * @param {string|elements|object|jQuery} element
-     * @param {object}                        options
-     *
-     * @this NavFootable
+     * Destroy the instance.
      */
-    var NavFootable = function (element, options) {
-        this.guid     = jQuery.guid;
-        this.options  = $.extend(true, {}, NavFootable.DEFAULTS, options);
-        this.$element = $(element);
+    destroy() {
+        this.$element
+            .off('shown.bs.tab.data-api.fxp.navfootable', '[data-toggle="tab"], [data-toggle="pill"]', onShown);
 
-        this.$element.on('shown.bs.tab.data-api.fxp.navfootable', '[data-toggle="tab"], [data-toggle="pill"]', this, onShown);
-    },
-        old;
-
-    /**
-     * Defaults options.
-     *
-     * @type {object}
-     */
-    NavFootable.DEFAULTS = {
-        footableSelector: '.footable'
-    };
-
-    /**
-     * Destroy instance.
-     *
-     * @this NavFootable
-     */
-    NavFootable.prototype.destroy = function () {
-        this.$element.off('shown.bs.tab.data-api.fxp.navfootable', '[data-toggle="tab"], [data-toggle="pill"]', onShown);
-        this.$element.removeData('st.navfootable');
-    };
-
-
-    // NAV FOOTABLE PLUGIN DEFINITION
-    // ==============================
-
-    function Plugin(option) {
-        var args = Array.prototype.slice.call(arguments, 1);
-
-        return this.each(function () {
-            var $this   = $(this),
-                data    = $this.data('st.navfootable'),
-                options = typeof option === 'object' && option;
-
-            if (!data && option === 'destroy') {
-                return;
-            }
-
-            if (!data) {
-                data = new NavFootable(this, options);
-                $this.data('st.navfootable', data);
-            }
-
-            if (typeof option === 'string') {
-                data[option].apply(data, args);
-            }
-        });
+        super.destroy();
     }
+}
 
-    old = $.fn.navFootable;
+/**
+ * Defaults options.
+ */
+NavFootable.defaultOptions = {
+    footableSelector: '.footable'
+};
 
-    $.fn.navFootable             = Plugin;
-    $.fn.navFootable.Constructor = NavFootable;
-
-
-    // NAV FOOTABLE NO CONFLICT
-    // ========================
-
-    $.fn.navFootable.noConflict = function () {
-        $.fn.navFootable = old;
-
-        return this;
-    };
-
-
-    // NAV FOOTABLE DATA-API
-    // =====================
-
-    $(window).on('load', function () {
-        $(document).each(function () {
-            var $this = $(this);
-            Plugin.call($this, $this.data());
-        });
-    });
-
-}));
+pluginify('navFootable', 'fxp.navfootable', NavFootable, true, document);
